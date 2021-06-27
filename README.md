@@ -1,8 +1,13 @@
 # Star Wars
+![](ForkJoinWars.jpg)
+
+**Hace mucho tiempo, en una cursada muy muy lejana, antiguos programadores tuvieron la tarea de hacer un sistema para modelar las personas y los planetas de la galaxia pero su tarea quedó inconclusa. Sabemos que pronto la fuerza volverá a despertar y el desarrollo tiene que estar listo, por lo que necesitamos continuar y terminar la tarea inconclusa.**
+
+_“El miedo es el camino hacia el Lado Oscuro: el miedo lleva a la ira, la ira lleva al odio, el odio lleva al sufrimiento.”_
+
 
 ## Modelo básico de personas y planetas.
 
-Nos piden armar parte del modelo de un juego con temática de Star Wars, que incluye a los planetas y a sus habitantes.
 
 De cada **persona** se registra su _edad_, o sea cuántos años tiene. Deben poder obtenerse: la _potencia_, la _inteligencia_ y si es o no _destacado_ de cada personas. Potencia e inteligencia son dos valores numéricos.
 En principio, corresponden estas definiciones:
@@ -12,8 +17,8 @@ En principio, corresponden estas definiciones:
 
 Además de estas definiciones que sirven para la generalidad de las personas, se definen algunos tipos de personas con características especiales. En principio vamos a contemplar a los atletas y los docentes.
 
-De cada **atleta** se mantienen la masa muscular (que comienza en 4 kilos) y la cantidad de técnicas que conoce (que comienza en 2).  
-La _potencia_ de un atleta es la suma del valor común para todas las personas, con la multiplicación entre masa muscular y cantidad de técnicas que conoce.  
+De cada **atleta** se conocen la masa muscular (que comienza en 4 kilos) y la cantidad de técnicas que conoce (que comienza en 2).  
+La _potencia_ de un atleta es la suma del valor de potencia para todas las personas, con la multiplicación entre masa muscular y cantidad de técnicas que conoce.  
 Un atleta _es destacado_ si cumple la condición común para todas las personas, o bien, conoce más de 5 técnicas.  
 Definir las siguientes dos acciones para los atletas:
 - _entrenar_ una cantidad de días: el efecto es sumar a la masa muscular 1 kilo por cada 5 días de entrenamiento. P.ej. el efecto de entrenar 15 días, es sumar 3 kilos a la masa muscular.
@@ -78,13 +83,13 @@ Y la siguiente acción: _recibir tributos_. Cuando ocurre esto, cada habitante o
 
 
 ## Valor de cada persona
-Agregar la capacidad de preguntarle a cualquier persona su _valor_, que es la suma de potencia más inteligencia. Para los docentes, se suman 5 unidades adicionales.  
+Agregar la capacidad de preguntarle a cualquier persona su _valor_, que es la suma de potencia más inteligencia. Unicamente para los docentes, se suman 5 unidades adicionales.  
 Se debe poder consultar, para un planeta, la colección de _habitantes valiosos_, que son aquellos cuyo valor es de 40 o más.
 
 
 ## Apaciguar a otro planeta
 Agregar para un planeta, la acción de _apaciguar_ a otro planeta.
-Cuando se le pide a un planeta X que apacigüe a otro planeta Y, lo que debe ocurrir es que cada habitante vaioso de X ofrezca su tributo a Y.   
+Cuando se le pide a un planeta X que apacigüe a otro planeta Y, lo que debe ocurrir es que cada habitante valioso de X ofrezca su tributo a Y.   
 P.ej. si tenemos dos planetas, Tritón y Paleas, y se le pide a Tritón que apacigüe a Paleas, el efecto debe ser que todos los habitantes valiosos de Tritón ofrezcan su tributo a Paleas.
 
 
