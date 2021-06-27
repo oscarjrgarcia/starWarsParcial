@@ -1,0 +1,5 @@
+import habitantes.*
+
+class Planeta {
+	
+}

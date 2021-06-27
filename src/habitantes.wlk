@@ -1,0 +1,3 @@
+import planeta.*
+class Persona {
+}
