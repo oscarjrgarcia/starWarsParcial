@@ -1,3 +1,89 @@
 import habitantes.*
 import planeta.*
+import armas.*
 
+test "basico" {
+	
+	const julieta = new Persona(edad=42)
+	const ana = new Atleta(edad=25)
+	const rosa = new Atleta(edad=45, tecnicas=8)
+	const perla = new Atleta(edad=28, tecnicas=4, masaMuscular=6)
+	const monica = new Docente(edad=45, cursos=6)
+	const luisa = new Docente(edad=35, cursos=1)
+	assert.that(julieta.potencia() == 20)
+	assert.that(julieta.inteligencia() == 8)
+	assert.that(not julieta.esDestacada())
+	
+	assert.that(ana.potencia() == 28)
+	assert.that(ana.inteligencia() == 12)
+	assert.that(ana.esDestacada())
+	
+	assert.that(rosa.potencia() == 52)
+	assert.that(rosa.inteligencia() == 8)
+	assert.that(rosa.esDestacada())
+	
+	assert.that(perla.potencia() == 44)
+	assert.that(perla.inteligencia() == 12)
+	assert.that(not perla.esDestacada())
+	
+	assert.that(monica.potencia() == 20)
+	assert.that(monica.inteligencia() == 20)
+	assert.that(monica.esDestacada())
+	
+	assert.that(luisa.potencia() == 20)
+	assert.that(luisa.inteligencia() == 14)
+	assert.that(not luisa.esDestacada())
+	
+	const triton = new Planeta(habitantes=#{julieta, ana, rosa, perla, monica, luisa}, museos=0)
+	
+	assert.that(triton.delegacionDiplomatica() == #{ana, rosa, monica})
+	assert.that(triton.valorInicialDeDefensa() == 2)
+	assert.that(not triton.esCulto())
+	assert.that(triton.potenciaReal() == 184)
+}
+
+test "perla" {
+	
+	const perla = new Atleta(edad=28, tecnicas=4, masaMuscular=6)
+	perla.entrenar(15)
+	perla.aprenderTecnica()
+	assert.that(perla.potencia() == 65)
+	assert.that(not perla.esDestacada())
+	perla.aprenderTecnica()
+	assert.that(perla.esDestacada())
+}
+
+test "nuevos agregados" {
+	const julieta = new Persona(edad=42)
+	const ana = new Atleta(edad=25)
+	const rosa = new Atleta(edad=45, tecnicas=8)
+	const perla = new Atleta(edad=28, tecnicas=4, masaMuscular=6)
+	const monica = new Docente(edad=45, cursos=6)
+	const luisa = new Docente(edad=35, cursos=1)
+	const triton = new Planeta(habitantes=#{julieta, ana, rosa, perla, monica, luisa}, museos=0)
+	const pistolete = new Pistolete(largo=18)
+	const maria = new Soldado(edad=25, armas=#{pistolete})
+	const paleas = new Planeta(habitantes=#{maria}, museos=0)
+	
+	triton.construirMurallas(3)
+	triton.fundarMuseo()
+	assert.that(triton.longitudMurallas() == 3)
+	assert.that(triton.museos() == 1)
+	assert.that(triton.potenciaAparente() == 312)
+	assert.that(not triton.necesitaReforzarse())
+	
+	triton.recibirTributo()
+	assert.that(triton.museos() == 3)
+	assert.that(triton.longitudMurallas() == 9)
+	
+	assert.that(julieta.valor() == 28)
+	assert.that(triton.habitantesValiosos() == #{ana, rosa, perla, monica})
+	triton.apaciguarPlaneta(paleas)
+	assert.that(paleas.museos() == 1)
+	assert.that(paleas.longitudMurallas() == 6)
+	
+	assert.that(maria.potencia() == 56)
+	maria.ofrecerTributo(paleas)
+	assert.that(paleas.longitudMurallas() == 11)
+	
+}
